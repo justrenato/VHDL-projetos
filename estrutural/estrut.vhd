@@ -15,6 +15,7 @@ entity mux2 is
 end mux2;
 
 architecture estrut of mux2 is 
+
   -- declara componentes que sao instanciados
   component inv is
     port(A : in bit; S : out bit);
@@ -24,14 +25,16 @@ architecture estrut of mux2 is
     port(A,B : in bit; S : out bit);
   end component nand2;
 
-  signal r, p, q : bit;              -- sinais internos
+  -- sinais internos
+  signal r, p, q : bit;              
   
-begin  -- compare ligacoes dos sinais com diagrama das portas logicas
+  -- compare ligacoes dos sinais com diagrama das portas logicas
+  begin  
 
-  Ui:  inv   port map(s, r);
-  Ua0: nand2 port map(a, r, p);
-  Ua1: nand2 port map(b, s, q);
-  Uor: nand2 port map(p, q, z);
+    Ui:  inv   port map(s, r);
+    Ua0: nand2 port map(a, r, p);
+    Ua1: nand2 port map(b, s, q);
+    Uor: nand2 port map(p, q, z);
     
 end architecture estrut;
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -57,7 +60,7 @@ architecture estrut of mux4 is
   signal p,q,r : bit;                   -- sinais internos
 begin
   
-  Um1: mux2 port map (a, b, p); -- PAREI AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  Um1: mux2 port map (a, b, p); 
   Um2: mux2 port map (c, d, q);
   Um3: mux2 port map (p, q, z);
 
@@ -92,6 +95,10 @@ architecture estrut of mux8 is
   
 begin
   
+  Um1: mux4 port map (a, b, c, d, p); 
+  Um2: mux4 port map (e, f, g, h, q);
+  Um3: mux2 port map (p, q, z);
+
   -- implemente usando dois mux4 e um mux2
 
 end architecture estrut;
@@ -123,7 +130,10 @@ architecture estrut of mux8vet is
   signal p,q,r : bit;
   
 begin
-
+  
+  Um1: mux4 port map (entr(7 downto 4), p); 
+  Um2: mux4 port map (entr(3 downto 0), q);
+  Um3: mux2 port map (sel, q, z);
   -- implemente usando dois mux4 e um mux2
 
 end architecture estrut;
