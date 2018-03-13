@@ -60,9 +60,9 @@ architecture estrut of mux4 is
   signal p,q,r : bit;                   -- sinais internos
 begin
   
-  Um1: mux2 port map (a, b, p); 
-  Um2: mux2 port map (c, d, q);
-  Um3: mux2 port map (p, q, z);
+  Um1: mux2 port map (a, b, s0, p); 
+  Um2: mux2 port map (c, d, s0, q);
+  Um3: mux2 port map (p, q, s1, z);
 
     -- implemente usando tres mux2
 
@@ -95,9 +95,9 @@ architecture estrut of mux8 is
   
 begin
   
-  Um1: mux4 port map (a, b, c, d, p); 
-  Um2: mux4 port map (e, f, g, h, q);
-  Um3: mux2 port map (p, q, z);
+  Um1: mux4 port map (a, b, c, d, s0, s1, p); 
+  Um2: mux4 port map (e, f, g, h, s0, s1, q);
+  Um3: mux2 port map (p, q, s2, z);
 
   -- implemente usando dois mux4 e um mux2
 
@@ -131,9 +131,10 @@ architecture estrut of mux8vet is
   
 begin
   
-  Um1: mux4 port map (entr(7 downto 4), p); 
-  Um2: mux4 port map (entr(3 downto 0), q);
-  Um3: mux2 port map (sel, q, z);
+  Um1: mux4 port map (entr(7),entr(6),entr(5),entr(4),sel(2),sel(1) , p); 
+  Um2: mux4 port map (entr(3),entr(2),entr(1),entr(0),sel(2),sel(1) , q);
+  Um3: mux2 port map (p, q, sel(0), z);
+
   -- implemente usando dois mux4 e um mux2
 
 end architecture estrut;
