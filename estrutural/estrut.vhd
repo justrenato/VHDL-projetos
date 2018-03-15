@@ -155,7 +155,22 @@ entity demux2 is
 end demux2;
 
 architecture estrut of demux2 is 
+
+  component inv is
+    port(A : in bit; S : out bit);
+  end component inv;
+
+  component and2 is
+    port(A,B : in bit; S : out bit);
+  end component and2;
+
+signal r : bit;  
+
 begin
+
+    Ui:  inv port map(s, r);
+    Ua0: and2 port map(a, r, z);
+    Ua1: and2 port map(a, s, w);
 
   -- implemente com portas logicas
 
@@ -175,8 +190,29 @@ entity demux4 is
 end demux4;
 
 architecture estrut of demux4 is
-begin
 
+  component inv is
+    port(A : in bit; S : out bit);
+  end component inv;
+
+  component and2 is
+    port(A,B : in bit; S : out bit);
+  end component and2;
+
+  component demux2 is
+    port(A,S : in bit; Z,W : out bit);
+  end component demux2;
+
+signal p,q,r : bit;
+
+begin
+  
+    Ui:  inv   port map(s1, r);
+    Ud: demux2 port map (a, s0, p, q);
+    Ua0: and2  port map(p, r, x);
+    Ua1: and2  port map(p, s1, y);
+    Ua2: and2  port map(q, r, z);
+    Ua3: and2  port map(q, s1, w);
   -- implemente com um demux2 e circuito(s) visto(s) nesta aula
 
 end architecture estrut;
@@ -195,8 +231,38 @@ entity demux8 is
 end demux8;
 
 architecture estrut of demux8 is
+
+  component inv is
+    port(A : in bit; S : out bit);
+  end component inv;
+
+  component and2 is
+    port(A,B : in bit; S : out bit);
+  end component and2;
+
+  component demux2 is
+    port(A,S : in bit; Z,W : out bit);
+  end component demux2;
+
+signal b,c,d,e,f,g,h,i : bit;
+
 begin
 
+    Ui1:  inv     port map(s1, d);
+    Ui2:  inv     port map(s2, i);
+    Ud:   demux2  port map(a, s0, b, c);
+    Ua0:  and2    port map(b, s1, e);
+    Ua1:  and2    port map(b, d, f);
+    Ua2:  and2    port map(c, s1, g);
+    Ua3:  and2    port map(c, d, h);
+    Ua4:  and2    port map(s2, e, p);
+    Ua5:  and2    port map( e, i, q);
+    Ua6:  and2    port map( f, s2, r);
+    Ua7:  and2    port map( f, i, s);
+    Ua8:  and2    port map( g, s2, t);
+    Ua9:  and2    port map( g, i, u);
+    Ua10: and2    port map( h, s2, v);
+    Ua11: and2    port map( h, i, w);
   -- implemente com um demux2 e circuito(s) visto(s) nesta aula
 
 end architecture estrut;
@@ -215,7 +281,22 @@ entity decod2 is
 end decod2;
 
 architecture estrut of decod2 is 
+
+  component inv is
+    port(A : in bit; S : out bit);
+  end component inv;
+
+  component and2 is
+    port(A,B : in bit; S : out bit);
+  end component and2;
+
+signal r : bit;
+
 begin
+
+    Ui:  inv  port map(r, z);
+    Ua0: and2 port map(s, s, r);
+    Ua1: and2 port map(s, s, w);
 
   -- implemente com portas logicas
 
@@ -234,9 +315,33 @@ entity decod4 is
 end decod4;
 
 architecture estrut of decod4 is
+
+  component inv is
+    port(A : in bit; S : out bit);
+  end component inv;
+
+  component and2 is
+    port(A,B : in bit; S : out bit);
+  end component and2;
+
+  component decod2 is
+    port(S : in bit; Z,W : out bit);
+  end component decod2;  
+
+signal a,b,c,d,e : bit;
+
 begin
 
+    Ui:  inv    port map(s1, a);
+    Ud0: decod2 port map(s0, b, c);
+    Ud1: decod2 port map(s0, d, e);
+    Ua0: and2 port map(b, a, x);
+    Ua1: and2 port map(c, a, y);
+    Ua2: and2 port map(d, s1, z);
+    Ua3: and2 port map(e, s1, w);
+
   -- implemente com decod2 e circuito(s) visto(s) nesta aula
+
 
 end architecture estrut;
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

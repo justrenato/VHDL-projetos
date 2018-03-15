@@ -26,6 +26,40 @@ begin
 end architecture comport;
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-- porta AND de 2 entradas
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+use work.p_wires.all;
+
+entity and2 is
+  port(A,B : in bit;
+       S   : out bit);
+end and2;
+
+architecture comport of and2 is 
+begin
+    S <= (A and B);
+end architecture comport;
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-- porta AND de 3 entradas
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+use work.p_wires.all;
+
+entity and3 is
+  port(A,B,C : in bit;
+       S     : out bit);
+end and3;
+
+architecture comport of and3 is 
+begin
+    S <= (A and B and C);
+end architecture comport;
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 
 
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -61,6 +95,38 @@ begin
 end architecture comport;
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-- porta OR de 2 entradas
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+use work.p_wires.all;
+
+entity or2 is
+  port(A,B : in bit;
+       S   : out bit);
+end or2;
+
+architecture comport of or2 is
+begin
+    S <= (A or B);
+end architecture comport;
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-- porta OR de 3 entradas
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+use work.p_wires.all;
+
+entity or3 is
+  port(A,B,C : in bit;
+       S     : out bit);
+end or3;
+
+architecture comport of or3 is 
+begin
+    S <= (A or B or C);
+end architecture comport;
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
