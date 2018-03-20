@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
-[*] Thu Aug 24 19:23:21 2017
+[*] Mon Mar 19 23:42:34 2018
 [*]
-[dumpfile] "/home/prof/roberto/test/estrutural/v_estrut.vcd"
-[dumpfile_mtime] "Thu Aug 24 19:23:01 2017"
-[dumpfile_size] 12544
-[savefile] "/home/prof/roberto/test/estrutural/v.sav"
+[dumpfile] "/home/bcc/rrs17/Matérias/terceiroSemestre/projetos/VHDL-projetos/estrutural/v_estrut.vcd"
+[dumpfile_mtime] "Mon Mar 19 23:37:45 2018"
+[dumpfile_size] 41045
+[savefile] "/home/bcc/rrs17/Matérias/terceiroSemestre/projetos/VHDL-projetos/estrutural/v.sav"
 [timestart] 0
 [size] 1344 601
 [pos] -1 -1
-*-17.000000 600000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-17.000000 265400 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] u_mux2.
 [sst_width] 210
 [signals_width] 228
@@ -19,7 +19,6 @@
 s[2:0]
 s0
 s1
-@29
 s2
 @200
 -
@@ -50,9 +49,10 @@ esperadademux_8[7:0]
 sdemux8[7:0]
 @200
 -
-@28
+@29
 [color] 2
 esperadadecod_2[1:0]
+@28
 sdecod2[1:0]
 [color] 1
 esperadadecod_4[3:0]

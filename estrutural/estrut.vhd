@@ -358,8 +358,34 @@ entity decod8 is
 end decod8;
 
 architecture estrut of decod8 is 
+
+  component inv is
+    port(A : in bit; S : out bit);
+  end component inv;
+
+  component and3 is
+    port(A,B,C : in bit; S : out bit);
+  end component and3;
+
+  component decod2 is
+    port(S : in bit; Z,W : out bit);
+  end component decod2;  
+
+signal a,b,g,h : bit;
+
 begin
   
+    Ui0:  inv    port map(s1, h);
+    Ui1:  inv    port map(s2, g);
+    Ud0: decod2 port map(s0, a, b);
+    Ua0: and3 port map(g, h, a, p);
+    Ua1: and3 port map(g, h, b, q);
+    Ua2: and3 port map(g, s1, a, r);
+    Ua3: and3 port map(g, s1, b, s);
+    Ua4: and3 port map(s2, h, a, t);
+    Ua5: and3 port map(s2, h, b, u);
+    Ua6: and3 port map(s2, s1, a, v);
+    Ua7: and3 port map(s2, s1, b, w);
   -- implemente com decod2 e circuito(s) visto(s) nesta aula
 
 end architecture estrut;
